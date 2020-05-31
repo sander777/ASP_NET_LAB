@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <ul style="list-style: none;">
+        <li><a href=@Url.Action("Index", "Categories")>Guids Categorys</a></li>
+        <li><a href=@Url.Action("Index", "Guides")>Guides</a></li>
+        <li><a href=@Url.Action("Index", "Patterns")>Patterns</a></li>
+        <li><a href=@Url.Action("Index", "ExcurionGuides")>Excursion Guide</a></li>
+        <li><a href=@Url.Action("Index", "Excursions")>Excursion</a></li>
+    </ul>
+</div>

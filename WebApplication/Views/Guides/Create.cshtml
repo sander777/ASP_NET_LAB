@@ -1,0 +1,47 @@
+﻿@model WebApplication.Guide
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Guide</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+            <ul style="list-style: none;height:150px; width:200px;overflow:hidden; overflow-y:scroll;">
+                @foreach (var i in ViewBag.Patterns)
+                {
+                <li>
+                    <input type="checkbox" name=@i.Id>
+                    <label for=@i.Id><a href=@Url.Action("Details", "Patterns", new { Id = @i.Id })>@i.Name</a></label>
+                    <input style="width: 100px" type="text" id=@i.Id-price name=@i.Id-price>
+                </li>
+                }
+            </ul>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
